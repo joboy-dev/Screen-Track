@@ -1,3 +1,5 @@
+{% load static %}
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -6,7 +8,28 @@
     <title>Screen Track- </title>
 </head>
 <body>
-    <h1>All set up</h1>
-    
+    <nav>
+        <div class="logo">
+
+        </div>
+
+        <div class="nav-items">
+            <a href="" class="nav-links"></a>
+            <a href="" class="nav-links"></a>
+            <a href="" class="nav-links"></a>
+            <a href="" class="nav-links"></a>
+        </div>
+    </nav>
+
+    <div class="cpu-data">
+        <p>CPU Usage- {{ cpu_percent }}%</p>
+        <p>No of CPUs- {{ cpu_count }}</p>
+        <p>Min CPU Frequency- {{ cpu_frequency.min }} MHz</p>
+        <p>Current CPU Frequency- {{ cpu_frequency.current }} MHz</p>
+        <p>Max CPU Frequency- {{ cpu_frequency.max }} MHz</p>
+    </div>
+
+    <script src="{% static 'js/refresh_system_data.js' %}"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
 </body>
 </html>

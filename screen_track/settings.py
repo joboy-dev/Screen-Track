@@ -34,6 +34,7 @@ ALLOWED_HOSTS = []
 
 INSTALLED_APPS = [
     # 'channels',
+    # 'daphne',
     
     'django.contrib.admin',
     'django.contrib.auth',
@@ -78,6 +79,13 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'screen_track.wsgi.application'
 ASGI_APPLICATION = 'screen_track.asgi.application'
+
+CHANNEL_LAYERS = {
+    'default': {
+        # for use in develeopment mode only
+        'BACKEND': 'channels.layers.InMemoryChannelLayer'
+    }
+}
 
 
 # Database
@@ -125,7 +133,8 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.2/howto/static-files/
 
-STATIC_URL = 'static/'
+STATIC_URL = '/static/'
+STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
