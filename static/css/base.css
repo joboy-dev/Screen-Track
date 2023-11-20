@@ -1,0 +1,234 @@
+/* ANIMATIONS */
+@keyframes scaleOpacityAnimation {
+    0% {
+        scale: 0.7;
+        opacity: 0;
+    }
+
+    100% {
+        scale: 1;
+        opacity: 1;
+    }
+}
+
+@keyframes opacityAnimation {
+    0% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 1;
+    }
+}
+
+@keyframes slideDownOpacityAnimation {
+    0% {
+        /* visibility: hidden; */
+        opacity: 0;
+        transform: translateY(-20px); /* Move element up initially */
+    }
+    100% {
+        /* visibility: visible; */
+        opacity: 1;
+        transform: translateY(0); /* Move element down to its original position */
+    }
+}
+
+
+:root {
+    --primary-color: #0b132b;
+    --secondary-color: #5bc0be;
+    --tertiary-color: #ffffff;
+    --fourth-color: #1c2541;
+    --fifth-color: #3a506b;
+
+    --default-box-shadow: 1px 2px 4px rgb(255, 255, 255, 0.3);
+    --default-spacing: 100px 200px 0 200px;
+}
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    transition: 0.3s ease;
+    font-family: 'Montserrat', sans-serif;
+    scroll-behavior: smooth;
+}
+
+html {
+    font-size: 30px;
+}
+
+body {
+    position:  relative;
+}
+
+nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 70px;
+    width: 100%;
+    background-color: var(--fifth-color);
+    padding: 20px 200px;
+    box-shadow: var(--default-box-shadow);
+    position: fixed;
+    z-index: 1001;
+}
+
+.logo {
+    background-color: transparent;
+}
+
+.logo a {
+    text-decoration: none;
+    color: var(--secondary-color);
+    font-weight: bold;
+    font-size: 1.1rem;
+}
+
+.nav-items {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 40px;
+    background-color: transparent;
+}
+
+.nav-items a, .nav-items p{
+    text-decoration: none;
+    background-color: transparent;
+    color: var(--secondary-color);
+    font-size: 0.6rem;
+}
+
+.nav-items a:hover {
+    font-weight: bold;
+    color: var(--fourth-color);
+}
+
+.nav-items a.active {
+    font-weight: bold;
+    color: var(--primary-color);
+}
+
+/* .nav-items .profile {
+    display: inline-block;
+} */
+
+.profile .profile-container {
+    width: 120px;
+    display: flex;
+    align-items: center;
+    justify-content: start;
+    gap: 20px;
+}
+
+.profile-container .profile-picture {
+    height: 30px;
+    width: 30px;
+    border-radius: 15px;
+    overflow: hidden;
+}
+
+.profile-picture img {
+    object-fit: cover;
+    height: 100%;
+    width: 100%;
+}
+
+.nav-items .profile p {
+    cursor: pointer;
+}
+
+.profile .profile-settings {
+    background-color: var(--fifth-color);
+    margin-top: 1px;
+    padding: 20px;
+    border-radius: 20px;
+    box-shadow: var(--default-box-shadow);
+    position: absolute;
+    display: none;
+}
+
+.profile-settings a {
+    font-size: 0.5rem;
+    display: block;
+    margin: 10px 0;
+}
+
+.profile-settings a:hover {
+    color: var(--fourth-color);
+}
+
+.profile p:hover .profile-settings {
+    display: block;
+}
+
+main {
+    background-color: var(--primary-color);
+}
+
+/* FLASH MESSAGES */
+
+.messages {
+    min-height: 50px;
+    width: 500px;
+    color: var(--tertiary-color);
+    font-size: 0.6rem;
+    font-weight: 500;
+    border-radius: 5px;
+    margin: 10px 0;
+    padding: 10px 20px;
+    display: flex;
+    align-items: center;
+    justify-content: stretch;
+    position: absolute;
+    top: 100px;
+    left: 100px;
+}
+
+.messages i {
+    cursor: pointer;
+}
+
+.success {
+    background-color: rgba(47, 168, 108, 0.8);
+}
+
+.error {
+    background-color: rgba(238, 107, 107, 0.8);
+}
+
+.info {
+    background-color: rgba(255, 249, 158, 0.8);
+}
+
+
+/* SCROLL BAR */
+
+::-webkit-scrollbar {
+    width: 2px;
+}
+
+::-webkit-scrollbar-track {
+    background-color: var(--primary-color);
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: var(--secondary-color);
+    border-radius: 40px;
+}
+
+
+footer {
+    background-color: var(--fifth-color);
+    text-align: center;
+    padding: 10px 0;
+}
+
+footer p {
+    font-size: 0.7rem;
+    font-weight: bold;
+    color: var(--tertiary-color);
+}

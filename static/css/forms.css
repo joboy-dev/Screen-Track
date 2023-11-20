@@ -1,0 +1,98 @@
+#form-section {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: var(--default-spacing);
+    height: 100vh;
+}
+
+form {
+    padding: 20px 30px;
+    background-color: var(--fifth-color);
+    border-radius: 30px;
+    box-shadow: var(--default-box-shadow);
+    animation: slideDownOpacityAnimation 1s ease-in;
+}
+
+h1 {
+    color: var(--secondary-color);
+    font-size: 1.1rem;
+    margin: 20px auto 40px;
+    text-align: center;
+}
+
+.login-form {
+    width: 40%;
+    height: 65%;
+}
+
+.signup-form {
+    width: 40%;
+    height: 92%;
+}
+
+.signup-form .names {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+}
+
+.edit-profile-form {
+    width: 40%;
+    height: 65%;
+}
+
+form label {
+    display: block;
+    font-size: 0.6rem;
+    font-weight: 500;
+    color: var(--tertiary-color);
+    margin: 0 20px;
+}
+
+form .input-field {
+    margin: 10px 0 20px 0;
+    display: block;
+    height: 60px;
+    width: 100%;
+    background-color: var(--fourth-color);
+    border: none;
+    border-radius: 30px;
+    padding: 10px 40px;
+    color: var(--tertiary-color);
+    font-size: 0.5rem;
+}
+
+form .input-field:focus {
+    outline: 1px solid var(--secondary-color);
+}
+
+input[type="submit"] {
+    height: 60px;
+    width: 100%;
+    background-color: var(--primary-color);
+    border: none;
+    color: var(--secondary-color);
+    border-radius: 30px;
+    font-size: 0.6rem;
+    font-weight: 500;
+    margin-top: 10px;
+}
+
+input[type="submit"]:hover {
+    background-color: var(--fourth-color);
+}
+
+.account-query {
+    font-size: 0.5rem;
+    color: var(--primary-color);
+    margin: 20px auto;
+    text-align: center;
+}
+
+.account-query a {
+    text-decoration: none;
+    color: var(--secondary-color);
+    font-weight: 500;
+}

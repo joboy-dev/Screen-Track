@@ -1,0 +1,48 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block page_title%}Sign Up{%endblock%}
+
+{% block styles %}
+    <link rel="stylesheet" href="{% static 'css/forms.css' %}">
+{% endblock %}
+
+{% block main %}
+
+    <section id="form-section">
+        <form action="" method="post" class="signup-form">
+            {% csrf_token %}
+            <h1>Sign Up</h1>
+
+            <div class="names">
+                <div class="form-field">
+                    <label for="first-name">First Name:</label>
+                    {{ form.first_name }}
+                </div>
+
+                <div class="form-field">
+                    <label for="first-name">Last Name:</label>
+                    {{ form.last_name }}
+                </div>
+            </div>
+
+            <div class="form-field">
+                <label for="email">Email:</label>
+                {{ form.email }}
+            </div>
+
+            <div class="form-field">
+                <label for="password">Password:</label>
+                {{ form.password }}
+            </div>
+
+            <div class="form-field">
+                <label for="confirm-password">Confirm Password:</label>
+                {{ form.password2 }}
+            </div>
+
+            <input type="submit" value="Sign Up">
+            <p class="account-query">Already have an account? <a href="{% url 'user:login' %}">Login</a></p>
+        </form>
+    </section>
+{% endblock %}

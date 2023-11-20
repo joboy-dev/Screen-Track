@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block page_title%}Profile{%endblock%}
+
+{% block styles %}
+    <link rel="stylesheet" href="{% static 'css/profile.css' %}">
+{% endblock %}
+
+{% block main %}
+
+    <section id="profile-section">
+        <div class="details-container">
+            <h1>User Details</h1>
+
+            <div class="profile-picture">
+                <img src="{{ user.profile_pic.url }}" alt="profile-pic">
+            </div>
+
+            <div class="names">
+                <div class="detail">
+                    <h3>First Name</h3>
+                    <p>{{ user.first_name }}</p>
+                </div>
+    
+                <div class="detail">
+                    <h3>Last Name</h3>
+                    <p>{{ user.last_name }}</p>
+                </div>
+            </div>
+
+            <div class="detail">
+                <h3>Email</h3>
+                <p>{{ user.email }}</p>
+            </div>
+
+        </div>
+    </section>
+
+{% endblock %}

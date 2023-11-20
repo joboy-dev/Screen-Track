@@ -5,31 +5,76 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Screen Track- </title>
+    <title>ScreenTrack- {% block page_title%}{%endblock%} </title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,300;0,400;0,500;0,600;0,700;0,900;1,100;1,400;1,500;1,600;1,700;1,900&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="{% static 'css/base.css' %}">
+
+    {% block styles %}{% endblock %}
 </head>
 <body>
     <nav>
         <div class="logo">
-
+            <a href="{% url 'screentrackapp:home' %}">ScreenTrack</a>
         </div>
 
+        
         <div class="nav-items">
-            <a href="" class="nav-links"></a>
-            <a href="" class="nav-links"></a>
-            <a href="" class="nav-links"></a>
-            <a href="" class="nav-links"></a>
-        </div>
-    </nav>
+            <a href="{% url 'screentrackapp:home' %}" class="nav-link {% if page_title == 'Home' %} active {% endif %}">Home</a>
+            {% if user.is_authenticated %}
+                <a href="" class="nav-link {% if page_title == 'History' %} active {% endif %}">History</a>
+                <div class="profile">
+                    <div class="profile-container">
+                        <div class="profile-picture">
+                            <img src="{{ user.profile_pic.url }}" alt="profile-pic">
+                        </div>
+                        <p class="nav-link {% if page_title == 'Profile' %} active {% endif %}">Profile</p>
+                    </div>
 
-    <div class="cpu-data">
-        <p>CPU Usage- {{ cpu_percent }}%</p>
-        <p>No of CPUs- {{ cpu_count }}</p>
-        <p>Min CPU Frequency- {{ cpu_frequency.min }} MHz</p>
-        <p>Current CPU Frequency- {{ cpu_frequency.current }} MHz</p>
-        <p>Max CPU Frequency- {{ cpu_frequency.max }} MHz</p>
-    </div>
+                    <div class="profile-settings">
+                        <a href="{% url 'user:profile' user.id %}" class="{% if page_title == 'Profile' %} active {% endif %}">View Profile</a>
+                        <a href="{% url 'user:edit-profile' user.id %}" class="{% if page_title == 'Edit Profile' %} active {% endif %}">Edit Profile</a>
+                        <a href="" class="{% if page_title == 'Change Profile Picture' %} active {% endif %}">Change Profile Picture</a>
+                        <a href="" class="{% if page_title == 'Change Password' %} active {% endif %}">Change Password</a>
+                    </div>
+                </div>
+                <a href="{% url 'user:logout' %}" class="nav-link {% if page_title == 'Logout' %} active {% endif %}">Logout</a>
+                
+                {% else %}
+                    <a href="{% url 'user:login' %}" class="nav-link {% if page_title == 'Login' %} active {% endif %}">Login</a>
+                    <a href="{% url 'user:signup' %}" class="nav-link {% if page_title == 'Sign Up' %} active {% endif %}">Sign Up</a>
+                {% endif %}
+            </div>
+        </nav>
+        
+    {% include 'constants/messages.html' %}
 
-    <script src="{% static 'js/refresh_system_data.js' %}"></script>
+    <main>
+        {% block main %}{% endblock %}
+    </main>
+
+    <footer>
+        <p>&copy; {{ year }}. ScreenTrack</p>
+    </footer>
+
     <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+
+    <script>
+        var dropDownButton = document.querySelector('.profile');
+        var dropDownItems = document.querySelector('.profile-settings')
+
+        function openDropDown() {
+            dropDownItems.style.display = 'block';
+        }
+
+        function closeDropDown() {
+            dropDownItems.style.display = 'none';
+        }
+
+        dropDownButton.addEventListener('mouseover', openDropDown)
+        dropDownButton.addEventListener('mouseout', closeDropDown)
+    </script>
 </body>
 </html>

@@ -9,11 +9,11 @@ from .manager import CustomUserManager
 class CustomUser(AbstractBaseUser, PermissionsMixin):
     '''Custom user model'''
 
-    # id = models.UUIDField(default=uuid4, primary_key=True)
+    id = models.UUIDField(default=uuid4, primary_key=True)
     email = models.EmailField(gettext_lazy('email address'), unique=True, null=False)
     first_name = models.CharField(max_length=128, null=False)
     last_name = models.CharField(max_length=128, null=False)
-    profile_pic = models.ImageField(default='profile_pics/default.png', upload_to='profile_pics', null=True)
+    profile_pic = models.ImageField(default='profile_pics/default.PNG', upload_to='profile_pics', null=True)
     is_active = models.BooleanField(default=True)
     is_superuser = models.BooleanField(default=False)
     is_staff = models.BooleanField(default=False)

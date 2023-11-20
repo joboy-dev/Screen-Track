@@ -24,9 +24,12 @@ psycopg2-binary==2.9.5
 pyasn1==0.5.0
 pyasn1-modules==0.3.0
 pycparser==2.21
+PyGetWindow==0.0.9
 pyOpenSSL==23.3.0
+PyRect==0.2.0
 python-dotenv==1.0.0
 pytz==2023.2
+pywin32==306
 PyYAML==6.0
 requests==2.28.2
 service-identity==23.1.0

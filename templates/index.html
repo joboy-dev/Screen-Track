@@ -1,0 +1,57 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block page_title%}Home{%endblock%}
+
+{% block styles %}
+    <link rel="stylesheet" href="{% static 'css/index.css' %}">
+{% endblock %}
+
+{% block main %}
+    {% if user.is_authenticated %}
+        <section id="home-section">
+            <div class="home-content">
+                    {% if apps %}
+                        <h1>Open Applications</h1>
+                        <div class="open-apps">
+                            {% for app in apps %}
+                                <div class="app-container">
+                                    <h3>{{ app }}</h3>
+                                    <p>Screen Time- </p>
+                                </div>
+                            {% endfor %}
+                        </div>
+                    {% else %}
+                        <p>No apps are open on your system</p>
+                    {% endif %}
+            </div>
+        
+            <div class="cpu-data">
+                <p><b>CPU Usage:</b> <span id="cpu-percent">{{ cpu_percent }}%</span></p>
+                <p><b>No of CPUs:</b> {{ cpu_count }}</p>
+                <p><b>Min CPU Frequency:</b> {{ cpu_frequency.min }} MHz</p>
+                <p><b>Current CPU Frequency:</b> {{ cpu_frequency.current }} MHz</p>
+                <p><b>Max CPU Frequency:</b> {{ cpu_frequency.max }} MHz</p>
+            </div>
+        </section>
+
+        <section id="analysis-section">
+            <h1>Screen Time Analysis</h1>
+            <div class="analysis">
+
+            </div>
+
+        </section>
+
+        <!-- <script src="{% static 'js/refresh_data.js' %}"></script> -->
+        <script>
+            setTimeout(function() {
+                location.reload();
+            }, 10000);
+        </script>
+    {% else%}
+        <section id="home-section">
+            <h1>You need to login to have access to this page</h1>
+        </section>
+    {% endif %}
+{% endblock %}
